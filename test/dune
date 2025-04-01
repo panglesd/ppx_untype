@@ -1,0 +1,3 @@
+(executable
+ (name main)
+ (preprocess (pps ppx_untype)))
