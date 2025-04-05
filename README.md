@@ -1,5 +1,9 @@
 # Ppx_untype
 
+> [!WARNING]
+>
+> This PPX was made as an April's fool joke. Do not use in production, do use it for fun!
+
 A simple PPX to remove all the annoying type errors produced by the OCaml compiler.
 
 Before:
@@ -21,3 +25,14 @@ $ dune exec test/main.exe
 ```
 
 Much better!
+
+---
+
+Technical information: it works by wrapping every expression in a call to `Obj.magic`: `1 + 1.` is turned into:
+
+```
+Obj.magic(
+  (Obj.magic (+))
+    (Obj.magic 1)
+    (Obj.magic 1.))
+```
